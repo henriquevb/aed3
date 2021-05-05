@@ -1,4 +1,4 @@
-package com.company;
+package com.perguntas.interfaces;
 
 /*
 REGISTRO HASH EXTENSÍVEL

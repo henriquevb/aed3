@@ -1,4 +1,6 @@
-package com.company;
+package com.perguntas.models;
+
+import com.perguntas.interfaces.Register;
 
 import java.io.*;
 

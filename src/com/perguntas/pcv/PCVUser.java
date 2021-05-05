@@ -1,5 +1,7 @@
-package com.company;
+package com.perguntas.pcv;
 
+
+import com.perguntas.interfaces.RegistroHashExtensivel;
 
 import java.io.*;
 

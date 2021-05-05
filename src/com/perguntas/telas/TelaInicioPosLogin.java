@@ -1,4 +1,4 @@
-package com.company.telas;
+package com.perguntas.telas;
 
 import java.io.IOException;
 import java.util.Scanner;

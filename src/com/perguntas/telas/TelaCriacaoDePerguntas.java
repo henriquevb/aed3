@@ -1,8 +1,8 @@
-package com.company.telas;
+package com.perguntas.telas;
 
-import com.company.ArvoreBMais;
-import com.company.CRUD;
-import com.company.Pergunta;
+import com.perguntas.structures.ArvoreBMais;
+import com.perguntas.crud.CRUD;
+import com.perguntas.models.Pergunta;
 
 import java.io.IOException;
 import java.util.Scanner;

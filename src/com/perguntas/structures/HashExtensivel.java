@@ -1,4 +1,4 @@
-package com.company;
+package com.perguntas.structures;
 
 /*
 TABELA HASH EXTENSÍVEL
@@ -14,6 +14,8 @@ disciplina:
 Implementado pelo Prof. Marcos Kutova
 v1.1 - 2021
 */
+
+import com.perguntas.interfaces.RegistroHashExtensivel;
 
 import java.io.*;
 import java.lang.reflect.Constructor;
