@@ -16,7 +16,7 @@ Entre com os dados de email, nome e senha para salvar, apos o cadastro digite 1 
 Classe Pergunta: **Implementado**  
 Rotina de Menus para CRUD: **Implementado**  
 Arvore B salvando ID do usuario e ID da pergunta: **Implementado**  
-CRUD:  
+CRUD:
 * Incluir: **Implementado**  
 * Listar: **Implementado**  
 * Alterar: **NÃO IMPLEMENTADO**  
