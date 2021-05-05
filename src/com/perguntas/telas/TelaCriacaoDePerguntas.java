@@ -56,7 +56,7 @@ public class TelaCriacaoDePerguntas {
                                 SimpleDateFormat formatter= new SimpleDateFormat("dd-MM-yyyy 'at' HH:mm:ss");
                                 Date date = new Date(pergunta.getCriacao());
 
-                                System.out.println("\n" + i+1 + ".");
+                                System.out.println("\n" + (i+1) + ".");
                                 System.out.println(formatter.format(date));
                                 System.out.println(pergunta.getPergunta());
                             }
