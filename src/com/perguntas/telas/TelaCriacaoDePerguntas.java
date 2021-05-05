@@ -74,9 +74,11 @@ public class TelaCriacaoDePerguntas {
                     break;
                 case 3:
                     //Alterar
+                    System.out.println("Alterar: A ser implementado");
                     break;
                 case 4:
                     //Arquivar
+                    System.out.println("Arquivar: A ser implementado");
                     break;
                 case 0:
                     telaInicioPosLogin.init(userId);
