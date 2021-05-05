@@ -4,22 +4,22 @@ import com.perguntas.interfaces.RegistroHashExtensivel;
 
 import java.io.*;
 
-public class PCVEmail implements RegistroHashExtensivel<PCVEmail> {
+public class PCVPergunta implements RegistroHashExtensivel<PCVPergunta> {
 
-    private String email;
+    private final short size = 12;
     private int id;
-    private final short SIZE = 44;
+    private long position;
 
-    public PCVEmail() {
-        this("", -1);
+    public PCVPergunta() {
+        this(-1, -1);
     }
 
-    public PCVEmail(String email, int id) {
+    public PCVPergunta(int id, long position) {
         try {
-            this.email = email;
             this.id = id;
-            if (email.length() + 6 > SIZE)
-                throw new Exception("Número de caracteres do email maior que o permitido. Os dados serão cortados.");
+            this.position = position;
+            if (this.id < -1)
+                throw new Exception("Id inválido");
         } catch (Exception ec) {
             ec.printStackTrace();
         }
@@ -27,27 +27,27 @@ public class PCVEmail implements RegistroHashExtensivel<PCVEmail> {
 
     @Override
     public int hashCode() {
-        return this.email.hashCode();
+        return this.id;
+    }
+
+    public long getPosition() {
+        return position;
     }
 
     public short size() {
-        return this.SIZE;
-    }
-
-    public String toString() {
-        return this.email + ";" + this.id;
+        return size;
     }
 
     public byte[] toByteArray() throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         DataOutputStream dos = new DataOutputStream(baos);
-        dos.writeUTF(email);
         dos.writeInt(id);
+        dos.writeLong(position);
         byte[] bs = baos.toByteArray();
-        byte[] bs2 = new byte[SIZE];
-        for (int i = 0; i < SIZE; i++)
+        byte[] bs2 = new byte[size];
+        for (int i = 0; i < size; i++)
             bs2[i] = ' ';
-        for (int i = 0; i < bs.length && i < SIZE; i++)
+        for (int i = 0; i < bs.length && i < size; i++)
             bs2[i] = bs[i];
         return bs2;
     }
@@ -55,8 +55,7 @@ public class PCVEmail implements RegistroHashExtensivel<PCVEmail> {
     public void fromByteArray(byte[] ba) throws IOException {
         ByteArrayInputStream bais = new ByteArrayInputStream(ba);
         DataInputStream dis = new DataInputStream(bais);
-        this.email = dis.readUTF();
         this.id = dis.readInt();
+        this.position = dis.readLong();
     }
-
 }

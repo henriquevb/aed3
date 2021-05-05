@@ -25,8 +25,8 @@ public class Pergunta implements Register {
     public Pergunta(int idUsuario, String pergunta) {
         this.idPergunta = -1;
         this.idUsuario = idUsuario;
-        this.criacao = criacao;
-        this.nota = nota;
+        this.criacao = System.currentTimeMillis();
+        this.nota = 0;
         this.pergunta = pergunta;
         this.ativa = true;
     }

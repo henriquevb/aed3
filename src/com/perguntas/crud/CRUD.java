@@ -2,6 +2,7 @@ package com.perguntas.crud;
 
 
 import com.perguntas.interfaces.Register;
+import com.perguntas.pcv.PCVPergunta;
 import com.perguntas.pcv.PCVUser;
 import com.perguntas.structures.HashExtensivel;
 
@@ -15,6 +16,7 @@ public class CRUD<T extends Register> {
     private final HashExtensivel<PCVUser> hashUser;
     protected RandomAccessFile file;
     Constructor<T> constructor;
+    HashExtensivel<PCVPergunta> hashPergunta = null;
 
     public CRUD(Constructor<T> constructor, String fileName) throws Exception {
         this.constructor = constructor;
@@ -50,8 +52,11 @@ public class CRUD<T extends Register> {
         file.writeShort(reg.length);
         file.write(reg);
 
-        if(constructor.getDeclaringClass().getName().equals("com.company.User")) {
+        if(constructor.getDeclaringClass().getName().equals("com.perguntas.models.User")) {
             hashUser.create(new PCVUser(object.getID(), pos));
+        } else if(constructor.getDeclaringClass().getName().equals("com.perguntas.models.Pergunta")) {
+            hashPergunta = new HashExtensivel<>(PCVPergunta.class.getConstructor(), 5, "hash_a.db", USER_PATH + "hash_b.db");
+            hashPergunta.create(new PCVPergunta(object.getID(), pos));
         }
 
         return object.getID();
@@ -65,10 +70,22 @@ public class CRUD<T extends Register> {
      */
     public T read(int id) throws Exception {
 
-        PCVUser read = hashUser.read(id);
-        if (read == null) return null;
+        PCVUser readUser = null;
+        PCVPergunta readPergunta = null;
+        long position = 0;
 
-        long position = read.getPosition();
+        if(constructor.getDeclaringClass().getName().equals("com.perguntas.models.User")) {
+            readUser = hashUser.read(id);
+
+            if (readUser == null) return null;
+            position = readUser.getPosition();
+        } else if(constructor.getDeclaringClass().getName().equals("com.perguntas.models.Pergunta")) {
+            readPergunta = hashPergunta.read(id);
+
+            if (readPergunta == null) return null;
+            position = readPergunta.getPosition();
+        }
+
         if (position < 0) return null;
 
         file.seek(position);

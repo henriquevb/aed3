@@ -12,3 +12,4 @@ Uso: Apos rodar o programa selecione 1 para acessar a plataforma caso já tenha 
 Entre com os dados de email, nome e senha para salvar, apos o cadastro digite 1 e entre com as credenciais.
 
 # 2ª etapa do prijeto em Grupo - Perguntas
+

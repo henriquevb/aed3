@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class TelaInicioPosLogin {
 
     Scanner console = new Scanner(System.in);
-    TelaCriacaoDePerguntas criacaoDePerguntas = new TelaCriacaoDePerguntas();
+    TelaCriacaoDePerguntas criacaoDePerguntas = new TelaCriacaoDePerguntas(this);
 
     public TelaInicioPosLogin() throws IOException {
     }
